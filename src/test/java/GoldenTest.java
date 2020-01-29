@@ -1,5 +1,5 @@
 import domain.IncorrectArgument;
-import domain.Plateau;
+import domain.Mars;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +15,7 @@ class GoldenTest {
         String expected = "1 3 N\n" +
                 "5 1 E";
 
-        String actual = new Plateau(input).execute();
+        String actual = new Mars(input).execute();
 
         Assertions.assertEquals(expected, actual);
     }
