@@ -1,10 +1,11 @@
+import domain.IncorrectArgument;
 import domain.Rover;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class GoldenTest {
     @Test
-    void shouldReturnExpected (){
+    void shouldReturnExpected () throws IncorrectArgument {
         String input = "5 5\n" +
                 "\n" +
                 "1 2 N\n" +
