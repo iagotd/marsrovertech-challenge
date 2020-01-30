@@ -57,7 +57,7 @@ class MarsTest {
                 "MMRMMRMRRM\n";
 
         Mars mars = new Mars(input);
-        Assertions.assertEquals(5, mars.getPlateauHeight());
+        Assertions.assertEquals(5, mars.getPlateauGrid().length);
     }
 
     @Test
@@ -69,7 +69,7 @@ class MarsTest {
                 "MMRMMRMRRM\n";
 
         Mars mars = new Mars(input);
-        Assertions.assertEquals(6, mars.getPlateauWidth());
+        Assertions.assertEquals(6, mars.getPlateauGrid()[0].length);
     }
 
     @Test
@@ -111,6 +111,17 @@ class MarsTest {
                 "1 2 N\n" +
                 "LMLMLMLMMX\n" +
                 "3 3 E\n" +
+                "MMRMMRMRRM\n";
+
+        Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
+    }
+
+    @Test
+    void shouldThrowErrorWhenRoverOnTop(){
+        String input = "5 6\n" +
+                "1 2 N\n" +
+                "MMMMMMMMMMM\n" +
+                "1 2 E\n" +
                 "MMRMMRMRRM\n";
 
         Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));

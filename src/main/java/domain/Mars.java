@@ -1,25 +1,23 @@
 package domain;
 
+import java.util.ArrayList;
+
 public class Mars {
-    private int plateauHeight;
-    private int plateauWidth;
     private int[][] plateauGrid;
-    private int numberOfRovers;
+    private ArrayList<Rover> roverList = new ArrayList<>();
 
     public Mars(String input) throws IncorrectArgument, IncorrectCommand {
-        if (("").equals(input) || input.split("\n").length <= 2) {
-            throw new IncorrectArgument();
-        }
 
-        if (input.split("\n").length % 2 == 0)
-            throw new IncorrectArgument();
-
-        setNumberOfRovers(input.split("\n").length / 2);
-
+        checkNumberOfInputLines(input);
         checkPlateauSizeParameters(input);
         checkCoordinatesParameters(input);
         checkOrdersParameters(input);
+    }
 
+    private void checkNumberOfInputLines(String input) throws IncorrectArgument {
+        if (("").equals(input) || input.split("\n").length <= 2 || input.split("\n").length % 2 == 0) {
+            throw new IncorrectArgument();
+        }
     }
 
     private void checkOrdersParameters(String input) throws IncorrectArgument {
@@ -43,8 +41,8 @@ public class Mars {
     private void checkPlateauSizeParameters(String input) throws IncorrectArgument {
         if (input.split("\n")[0].trim().split(" ").length == 2) {
             try {
-                setPlateauHeight(Integer.parseInt(input.split("\n")[0].trim().split(" ")[0]));
-                setPlateauWidth(Integer.parseInt(input.split("\n")[0].trim().split(" ")[1]));
+                plateauGrid = new int[Integer.parseInt(input.split("\n")[0].trim().split(" ")[0])]
+                        [Integer.parseInt(input.split("\n")[0].trim().split(" ")[1])];
             } catch (NumberFormatException e) {
                 throw new IncorrectArgument();
             }
@@ -54,26 +52,49 @@ public class Mars {
     }
 
     private void checkCoordinatesParameters(String input) throws IncorrectArgument {
-        if (input.split("\n")[1].trim().split(" ").length == 3) {
-            try {
-                int x = Integer.parseInt(input.split("\n")[1].trim().split(" ")[0]);
-                int y = Integer.parseInt(input.split("\n")[1].trim().split(" ")[1]);
+        for (int i = 1; i < input.split("\n").length; i += 2) {
+            if (input.split("\n")[i].trim().split(" ").length == 3) {
+                try {
+                    int x = Integer.parseInt(input.split("\n")[i].trim().split(" ")[0]);
+                    int y = Integer.parseInt(input.split("\n")[i].trim().split(" ")[1]);
+                    String d = "";
 
-                switch (input.split("\n")[1].trim().split(" ")[2].trim()) {
-                    case "N":
-                    case "S":
-                    case "W":
-                    case "E":
-                        break;
-                    default:
-                        throw new IncorrectArgument();
+                    switch (input.split("\n")[i].trim().split(" ")[2].trim()) {
+                        case "N":
+                        case "S":
+                        case "W":
+                        case "E":
+                            d = input.split("\n")[i].trim().split(" ")[2].trim();
+                            break;
+                        default:
+                            throw new IncorrectArgument();
+                    }
+
+                    for (int j = i + 2; j < input.split("\n").length; j += 2) {
+                        if (x == Integer.parseInt(input.split("\n")[j].trim().split(" ")[0]) &&
+                                y == Integer.parseInt(input.split("\n")[j].trim().split(" ")[1])) {
+                            throw new IncorrectArgument();
+                        }
+                    }
+
+                    if (i == 1) {
+                        roverList.add(new Rover(x, y, d));
+                    } else {
+                        int x0 = roverList.get((i - 3) / 2).getX();
+                        int y0 = roverList.get((i - 3) / 2).getY();
+
+                        if (x == x0 && y == y0) {
+                            throw new IncorrectArgument();
+                        }
+
+                    }
+
+                } catch (NumberFormatException e) {
+                    throw new IncorrectArgument();
                 }
-
-            } catch (NumberFormatException e) {
+            } else {
                 throw new IncorrectArgument();
             }
-        } else {
-            throw new IncorrectArgument();
         }
     }
 
@@ -81,36 +102,12 @@ public class Mars {
         return "";
     }
 
-    public int getPlateauHeight() {
-        return this.plateauHeight;
-    }
-
-    public int getPlateauWidth() {
-        return this.plateauWidth;
-    }
-
     public int[][] getPlateauGrid() {
         return this.plateauGrid;
     }
 
-    public int getNumberOfRovers() {
-        return this.numberOfRovers;
-    }
-
-    private void setPlateauHeight(int parseInt) {
-        this.plateauHeight = parseInt;
-    }
-
-    private void setPlateauWidth(int parseInt) {
-        this.plateauWidth = parseInt;
-    }
-
     private void setPlateauGrid(int[][] plateauGrid) {
         this.plateauGrid = plateauGrid;
-    }
-
-    private void setNumberOfRovers(int numberOfRovers) {
-        this.numberOfRovers = numberOfRovers;
     }
 
 }
