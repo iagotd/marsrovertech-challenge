@@ -27,7 +27,7 @@ class MarsTest {
     }
 
     @Test
-    void shouldThrowErrorWhenSizeIsNotCorrect(){
+    void shouldThrowErrorWhenSizeIsNotCorrect() {
         String input = "5 \n" +
                 "1 2 N\n" +
                 "LMLMLMLMM\n" +
@@ -38,7 +38,7 @@ class MarsTest {
     }
 
     @Test
-    void shouldThrowErrorWhenSizeIsNotNumber(){
+    void shouldThrowErrorWhenSizeIsNotNumber() {
         String input = "5 N\n" +
                 "1 2 N\n" +
                 "LMLMLMLMM\n" +
@@ -73,7 +73,7 @@ class MarsTest {
     }
 
     @Test
-    void shouldThrowErrorWhenCoordinatesNotCorrect(){
+    void shouldThrowErrorWhenCoordinatesNotCorrect() {
         String input = "5 6\n" +
                 "1 2 \n" +
                 "LMLMLMLMM\n" +
@@ -84,7 +84,7 @@ class MarsTest {
     }
 
     @Test
-    void shouldThrowErrorWhenPositionNotNumber(){
+    void shouldThrowErrorWhenPositionNotNumber() {
         String input = "5 6\n" +
                 "1 A N\n" +
                 "LMLMLMLMM\n" +
