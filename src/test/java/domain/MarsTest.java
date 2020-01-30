@@ -84,7 +84,7 @@ class MarsTest {
     }
 
     @Test
-    void shouldThrowErrorWhenPositionNotNumber() {
+    void shouldThrowErrorWhenCoordinatesNotNumber() {
         String input = "5 6\n" +
                 "1 A N\n" +
                 "LMLMLMLMM\n" +
@@ -95,7 +95,7 @@ class MarsTest {
     }
 
     @Test
-    void shouldThrowErrorWhenPositionNotWindRose() {
+    void shouldThrowErrorWhenCoordinatesNotWindRose() {
         String input = "5 6\n" +
                 "1 2 X\n" +
                 "LMLMLMLMM\n" +
