@@ -18,7 +18,7 @@ The problem consist on making a finite number of Rover robots move in a plateau 
 - The build automation tool is [Gradle](https://docs.gradle.org/current/userguide/userguide.html).
 
 
-## :hammer_and_wrench: About my Solution
+## :heavy_check_mark: About my Solution
 The solution is still in progress:
 - [x] Project first configuration
 - [x] Directory structure
