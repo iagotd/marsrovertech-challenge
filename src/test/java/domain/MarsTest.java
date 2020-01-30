@@ -94,5 +94,16 @@ class MarsTest {
         Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
     }
 
+    @Test
+    void shouldThrowErrorWhenPositionNotWindRose() {
+        String input = "5 6\n" +
+                "1 2 X\n" +
+                "LMLMLMLMM\n" +
+                "3 3 E\n" +
+                "MMRMMRMRRM\n";
+
+        Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
+    }
+
 
 }
