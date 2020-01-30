@@ -1,11 +1,12 @@
 import domain.IncorrectArgument;
+import domain.IncorrectCommand;
 import domain.Mars;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class GoldenTest {
     @Test
-    void shouldReturnExpected () throws IncorrectArgument {
+    void shouldReturnExpected () throws IncorrectArgument, IncorrectCommand {
         String input = "5 5\n" +
                 "1 2 N\n" +
                 "LMLMLMLMM\n" +

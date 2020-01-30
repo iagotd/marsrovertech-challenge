@@ -49,7 +49,7 @@ class MarsTest {
     }
 
     @Test
-    void shouldNotThrowErrorWhenHeightIsOkey() throws IncorrectArgument {
+    void shouldNotThrowErrorWhenHeightIsOk() throws IncorrectArgument, IncorrectCommand {
         String input = "5 6\n" +
                 "1 2 N\n" +
                 "LMLMLMLMM\n" +
@@ -61,7 +61,7 @@ class MarsTest {
     }
 
     @Test
-    void shouldNotThrowErrorWhenWidthIsOkey() throws IncorrectArgument {
+    void shouldNotThrowErrorWhenWidthIsOk() throws IncorrectArgument, IncorrectCommand {
         String input = "5 6\n" +
                 "1 2 N\n" +
                 "LMLMLMLMM\n" +
@@ -103,6 +103,28 @@ class MarsTest {
                 "MMRMMRMRRM\n";
 
         Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
+    }
+
+    @Test
+    void shouldThrowErrorWhenOrderNotLMR() {
+        String input = "5 6\n" +
+                "1 2 N\n" +
+                "LMLMLMLMMX\n" +
+                "3 3 E\n" +
+                "MMRMMRMRRM\n";
+
+        Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
+    }
+
+    @Test
+    void shouldThrowErrorWhenRoverOutOfLimits() {
+        String input = "5 6\n" +
+                "1 2 N\n" +
+                "MMMMMMMMMMM\n" +
+                "3 3 E\n" +
+                "MMRMMRMRRM\n";
+
+        Assertions.assertThrows(IncorrectCommand.class, () -> new Mars(input));
     }
 
 
