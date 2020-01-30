@@ -113,5 +113,4 @@ public class Mars {
         this.numberOfRovers = numberOfRovers;
     }
 
-
 }
