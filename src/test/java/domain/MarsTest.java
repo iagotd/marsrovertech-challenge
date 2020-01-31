@@ -117,10 +117,10 @@ class MarsTest {
     }
 
     @Test
-    void shouldThrowErrorWhenRoverOnTop(){
+    void shouldThrowErrorWhenRoverStartsOnTop(){
         String input = "5 6\n" +
                 "1 2 N\n" +
-                "MMMMMMMMMMM\n" +
+                "LMLMLMLMMX\n" +
                 "1 2 E\n" +
                 "MMRMMRMRRM\n";
 
@@ -128,14 +128,25 @@ class MarsTest {
     }
 
     @Test
-    void shouldThrowErrorWhenRoverOutOfLimits() {
+    void shouldThrowErrorWhenRoverStartsBeforeLimits() {
         String input = "5 6\n" +
                 "1 2 N\n" +
-                "MMMMMMMMMMM\n" +
-                "3 3 E\n" +
+                "LMLMLMLMMM\n" +
+                "-3 3 E\n" +
                 "MMRMMRMRRM\n";
 
-        Assertions.assertThrows(IncorrectCommand.class, () -> new Mars(input));
+        Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
+    }
+
+    @Test
+    void shouldThrowErrorWhenRoverStartsOutOfLimits() {
+        String input = "5 6\n" +
+                "1 2 N\n" +
+                "LMLMLMLMMM\n" +
+                "3 6 E\n" +
+                "MMRMMRMRRM\n";
+
+        Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
     }
 
 

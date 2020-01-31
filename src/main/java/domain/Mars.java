@@ -24,7 +24,6 @@ public class Mars {
 
         for (int i = 2; i < input.split("\n").length; i += 2) {
             String order = input.split("\n")[i].trim();
-            System.out.println(order + "----" + order.length());
             for (int j = 0; j < order.length(); j++) {
                 switch (order.charAt(j)) {
                     case 'L':
@@ -70,10 +69,14 @@ public class Mars {
                             throw new IncorrectArgument();
                     }
 
-                    for (int j = i + 2; j < input.split("\n").length; j += 2) {
-                        if (x == Integer.parseInt(input.split("\n")[j].trim().split(" ")[0]) &&
-                                y == Integer.parseInt(input.split("\n")[j].trim().split(" ")[1])) {
-                            throw new IncorrectArgument();
+                    if (x < 0 || y < 0 || x > (plateauGrid.length - 1) || y > (plateauGrid[0].length - 1)){
+                        throw new IncorrectArgument();
+                    }else{
+                        for (int j = i + 2; j < input.split("\n").length; j += 2) {
+                            if (x == Integer.parseInt(input.split("\n")[j].trim().split(" ")[0]) &&
+                                    y == Integer.parseInt(input.split("\n")[j].trim().split(" ")[1])) {
+                                throw new IncorrectArgument();
+                            }
                         }
                     }
 
