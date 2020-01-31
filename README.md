@@ -22,7 +22,7 @@ The problem consist on making a finite number of Rover robots move in a plateau 
 The solution is still in progress:
 - [x] Project first configuration
 - [x] Directory structure
+- [X] First Rover moves
+- [X] N Rovers move without collision
 - [X] Golden test
-- [ ] First Rover moves
-- [ ] N Rovers move without collision
 - [ ] Refactor and clean up
