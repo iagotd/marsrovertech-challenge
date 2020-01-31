@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class GoldenTest {
     @Test
     void shouldReturnExpected () throws IncorrectArgument, IncorrectCommand {
-        String input = "5 5\n" +
+        String input = "6 5\n" +
                 "1 2 N\n" +
                 "LMLMLMLMM\n" +
                 "3 3 E\n" +

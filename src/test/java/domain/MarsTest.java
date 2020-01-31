@@ -160,5 +160,16 @@ class MarsTest {
         Assertions.assertThrows(IncorrectCommand.class, () -> new Mars(input));
     }
 
+    @Test
+    void shouldThrowErrorWhenRoverWalksOnTopOfOtherRover() {
+        String input = "5 6\n" +
+                "1 2 N\n" +
+                "LLLL\n" +
+                "3 3 W\n" +
+                "MMLM\n";
+
+        Assertions.assertThrows(IncorrectCommand.class, () -> new Mars(input));
+    }
+
 
 }

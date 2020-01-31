@@ -20,8 +20,6 @@ public class Mars {
     private void moveRovers(String input) throws IncorrectArgument, IncorrectCommand {
         for (int i = 0; i < roverList.size(); i++) {
             String order = input.split("\n")[(i + 1) * 2].trim();
-            System.out.println("ORDER: "+order);
-            System.out.println("X: "+roverList.get(i).getX()+", Y: "+roverList.get(i).getY()+", D: "+roverList.get(i).getD());
             for (int j = 0; j < order.length(); j++) {
                 switch (order.charAt(j)) {
                     case 'L':
@@ -36,44 +34,47 @@ public class Mars {
                     default:
                         throw new IncorrectArgument();
                 }
-                System.out.println("X: "+roverList.get(i).getX()+", Y: "+roverList.get(i).getY()+", D: "+roverList.get(i).getD());
             }
         }
     }
 
     private void goStraight(Rover rover) throws IncorrectCommand {
 
-        int xMatrix = plateauGrid.length - 1 - rover.getY();
-        int yMatrix = rover.getX();
-        plateauGrid[xMatrix][yMatrix] = 0;
+        plateauGrid[plateauGrid.length - 1 - rover.getY()][rover.getX()] = 0;
 
         switch (rover.getD()) {
             case "N":
-                if (rover.getY() + 1 >= plateauGrid.length) {
+                if (rover.getY() + 1 >= plateauGrid.length || plateauGrid[plateauGrid.length - 1 - rover.getY() - 1][rover.getX()] == 1) {
                     throw new IncorrectCommand();
+                }else{
+                    rover.setY(rover.getY() + 1);
                 }
-                rover.setY(rover.getY() + 1);
                 break;
             case "W":
-                if (rover.getX() - 1 < 0) {
+                if (rover.getX() - 1 < 0 || plateauGrid[plateauGrid.length - 1 - rover.getY()][rover.getX() - 1] == 1) {
                     throw new IncorrectCommand();
+                }else{
+                    rover.setX(rover.getX() - 1);
                 }
-                rover.setX(rover.getX() - 1);
                 break;
             case "S":
-                if (rover.getY() - 1 < 0) {
+                if (rover.getY() - 1 < 0 || plateauGrid[plateauGrid.length - 1 - rover.getY() + 1][rover.getX()] == 1) {
                     throw new IncorrectCommand();
+                }else{
+                    rover.setY(rover.getY() - 1);
                 }
-                rover.setY(rover.getY() - 1);
                 break;
             case "E":
-                if (rover.getX() + 1 >= plateauGrid[0].length) {
+                if (rover.getX() + 1 >= plateauGrid[0].length || plateauGrid[plateauGrid.length - 1 - rover.getY()][rover.getX() + 1] == 1) {
                     throw new IncorrectCommand();
+                }else{
+                    rover.setX(rover.getX() + 1);
                 }
-                rover.setX(rover.getX() + 1);
                 break;
-
+            default:
         }
+
+        plateauGrid[plateauGrid.length - 1 - rover.getY()][rover.getX()] = 1;
     }
 
     private void turnRight(Rover rover) {
@@ -113,13 +114,6 @@ public class Mars {
     private void addRoversToPlateau() {
         for (int i = 0; i < roverList.size(); i++) {
             plateauGrid[plateauGrid.length - 1 - roverList.get(i).getY()][roverList.get(i).getX()] = 1;
-        }
-
-        for (int i = 0; i < plateauGrid.length; i++) {
-            for (int j = 0; j < plateauGrid[0].length; j++) {
-                System.out.print(plateauGrid[i][j]);
-            }
-            System.out.println();
         }
     }
 
@@ -213,7 +207,13 @@ public class Mars {
     }
 
     public String execute() {
-        return "";
+        String goldenString = "";
+
+        for(Rover rover : roverList){
+            goldenString += rover.getX() + " " + rover.getY() + " " + rover.getD() + "\n";
+        }
+
+        return goldenString.trim();
     }
 
     public int[][] getPlateauGrid() {
