@@ -23,6 +23,6 @@ The solution is still in progress:
 - [x] Project first configuration
 - [x] Directory structure
 - [X] Golden test
-- [ ] First Rover moves
+- [X] First Rover moves
 - [ ] N Rovers move without collision
 - [ ] Refactor and clean up
