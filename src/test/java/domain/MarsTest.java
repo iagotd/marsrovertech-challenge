@@ -149,5 +149,16 @@ class MarsTest {
         Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
     }
 
+    @Test
+    void shouldThrowErrorWhenRoverWalksOutOfLimits() {
+        String input = "5 6\n" +
+                "1 2 N\n" +
+                "LMLMLMLMMM\n" +
+                "3 4 E\n" +
+                "MMMM\n";
+
+        Assertions.assertThrows(IncorrectCommand.class, () -> new Mars(input));
+    }
+
 
 }

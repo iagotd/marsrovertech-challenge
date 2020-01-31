@@ -12,6 +12,73 @@ public class Mars {
         checkPlateauSizeParameters(input);
         checkCoordinatesParameters(input);
         checkOrdersParameters(input);
+
+        addRoversToPlateau();
+
+        System.out.println("RoverList Size: " + roverList.size());
+        for (int i = 0; i < roverList.size(); i++) {
+            String order = input.split("\n")[(i + 1) * 2].trim();
+            System.out.println("Order: " + order);
+            for (int j = 0; j < order.length(); j++) {
+                switch (order.charAt(j)) {
+                    case 'L':
+                        turnLeft(roverList.get(i));
+                        break;
+                    case 'R':
+                        turnRight(roverList.get(i));
+                        break;
+                    case 'M':
+                        goStraight(roverList.get(i));
+                        break;
+                    default:
+                        throw new IncorrectArgument();
+                }
+            }
+        }
+
+    }
+
+    private void goStraight(Rover rover) {
+    }
+
+    private void turnRight(Rover rover) {
+        switch (rover.getD()) {
+            case "N":
+                rover.setD("E");
+                break;
+            case "W":
+                rover.setD("N");
+                break;
+            case "S":
+                rover.setD("W");
+                break;
+            case "E":
+                rover.setD("S");
+                break;
+        }
+    }
+
+    private void turnLeft(Rover rover) {
+        switch (rover.getD()) {
+            case "N":
+                rover.setD("W");
+                break;
+            case "W":
+                rover.setD("S");
+                break;
+            case "S":
+                rover.setD("D");
+                break;
+            case "E":
+                rover.setD("N");
+                break;
+        }
+    }
+
+    private void addRoversToPlateau() {
+        for (int i = 0; i < roverList.size(); i++) {
+            plateauGrid[roverList.get(i).getX()][roverList.get(i).getY()] = 1;
+        }
     }
 
     private void checkNumberOfInputLines(String input) throws IncorrectArgument {
@@ -69,9 +136,9 @@ public class Mars {
                             throw new IncorrectArgument();
                     }
 
-                    if (x < 0 || y < 0 || x > (plateauGrid.length - 1) || y > (plateauGrid[0].length - 1)){
+                    if (x < 0 || y < 0 || x > (plateauGrid.length - 1) || y > (plateauGrid[0].length - 1)) {
                         throw new IncorrectArgument();
-                    }else{
+                    } else {
                         for (int j = i + 2; j < input.split("\n").length; j += 2) {
                             if (x == Integer.parseInt(input.split("\n")[j].trim().split(" ")[0]) &&
                                     y == Integer.parseInt(input.split("\n")[j].trim().split(" ")[1])) {
@@ -88,6 +155,8 @@ public class Mars {
 
                         if (x == x0 && y == y0) {
                             throw new IncorrectArgument();
+                        } else {
+                            roverList.add(new Rover(x, y, d));
                         }
 
                     }
