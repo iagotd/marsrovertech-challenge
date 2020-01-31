@@ -32,7 +32,7 @@ class MarsTest {
                 "1 2 N\n" +
                 "LMLMLMLMM\n" +
                 "3 3 E\n" +
-                "MMRMMRMRRM\n";
+                "MRMMRMRRM\n";
 
         Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
     }
@@ -43,7 +43,7 @@ class MarsTest {
                 "1 2 N\n" +
                 "LMLMLMLMM\n" +
                 "3 3 E\n" +
-                "MMRMMRMRRM\n";
+                "MRMMRMRRM\n";
 
         Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
     }
@@ -54,10 +54,10 @@ class MarsTest {
                 "1 2 N\n" +
                 "LMLMLMLMM\n" +
                 "3 3 E\n" +
-                "MMRMMRMRRM\n";
+                "MRMMRMRRM\n";
 
         Mars mars = new Mars(input);
-        Assertions.assertEquals(5, mars.getPlateauGrid().length);
+        Assertions.assertEquals(6, mars.getPlateauGrid().length);
     }
 
     @Test
@@ -66,10 +66,10 @@ class MarsTest {
                 "1 2 N\n" +
                 "LMLMLMLMM\n" +
                 "3 3 E\n" +
-                "MMRMMRMRRM\n";
+                "MRMMRMRRM\n";
 
         Mars mars = new Mars(input);
-        Assertions.assertEquals(6, mars.getPlateauGrid()[0].length);
+        Assertions.assertEquals(5, mars.getPlateauGrid()[0].length);
     }
 
     @Test
@@ -78,7 +78,7 @@ class MarsTest {
                 "1 2 \n" +
                 "LMLMLMLMM\n" +
                 "3 3 E\n" +
-                "MMRMMRMRRM\n";
+                "MRMMRMRRM\n";
 
         Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
     }
@@ -89,7 +89,7 @@ class MarsTest {
                 "1 A N\n" +
                 "LMLMLMLMM\n" +
                 "3 3 E\n" +
-                "MMRMMRMRRM\n";
+                "MRMMRMRRM\n";
 
         Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
     }
@@ -100,7 +100,7 @@ class MarsTest {
                 "1 2 X\n" +
                 "LMLMLMLMM\n" +
                 "3 3 E\n" +
-                "MMRMMRMRRM\n";
+                "MRMMRMRRM\n";
 
         Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
     }
@@ -111,7 +111,7 @@ class MarsTest {
                 "1 2 N\n" +
                 "LMLMLMLMMX\n" +
                 "3 3 E\n" +
-                "MMRMMRMRRM\n";
+                "MRMMRMRRM\n";
 
         Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
     }
@@ -122,7 +122,7 @@ class MarsTest {
                 "1 2 N\n" +
                 "LMLMLMLMMX\n" +
                 "1 2 E\n" +
-                "MMRMMRMRRM\n";
+                "MRMMRMRRM\n";
 
         Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
     }
@@ -133,7 +133,7 @@ class MarsTest {
                 "1 2 N\n" +
                 "LMLMLMLMMM\n" +
                 "-3 3 E\n" +
-                "MMRMMRMRRM\n";
+                "MRMMRMRRM\n";
 
         Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
     }
@@ -144,7 +144,7 @@ class MarsTest {
                 "1 2 N\n" +
                 "LMLMLMLMMM\n" +
                 "3 6 E\n" +
-                "MMRMMRMRRM\n";
+                "MRMMRMRRM\n";
 
         Assertions.assertThrows(IncorrectArgument.class, () -> new Mars(input));
     }
@@ -153,8 +153,8 @@ class MarsTest {
     void shouldThrowErrorWhenRoverWalksOutOfLimits() {
         String input = "5 6\n" +
                 "1 2 N\n" +
-                "LMLMLMLMMM\n" +
-                "3 4 E\n" +
+                "MMMLMLMMM\n" +
+                "3 3 E\n" +
                 "MMMM\n";
 
         Assertions.assertThrows(IncorrectCommand.class, () -> new Mars(input));
