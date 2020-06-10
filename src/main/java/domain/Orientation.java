@@ -1,5 +1,5 @@
 package domain;
 
 public enum Orientation {
-  N;
+  N, S , W, E
 }
