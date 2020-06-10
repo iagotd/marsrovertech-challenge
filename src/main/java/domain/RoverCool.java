@@ -49,4 +49,8 @@ public class RoverCool {
     result = 31 * result + instructions.hashCode();
     return result;
   }
+
+  public PositionReport move() {
+    return null;
+  }
 }
