@@ -1,6 +1,5 @@
 import domain.IncorrectArgument;
 import domain.IncorrectCommand;
-import domain.Mars;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

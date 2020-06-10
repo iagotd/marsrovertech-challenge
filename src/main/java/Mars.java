@@ -1,4 +1,6 @@
-package domain;
+import domain.IncorrectArgument;
+import domain.IncorrectCommand;
+import domain.Rover;
 
 import java.util.ArrayList;
 
@@ -8,10 +10,17 @@ public class Mars {
 
     public Mars(String input) throws IncorrectArgument, IncorrectCommand {
 
+        // TO DO: only check and throw inputs single respon
+        /*
         checkNumberOfInputLines(input);
         checkPlateauSizeParameters(input);
         checkCoordinatesParameters(input);
         checkOrdersParameters(input);
+        */
+
+
+
+
         addRoversToPlateau();
         moveRovers(input);
 

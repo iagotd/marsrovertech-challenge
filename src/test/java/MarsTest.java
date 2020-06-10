@@ -1,5 +1,5 @@
-package domain;
-
+import domain.IncorrectArgument;
+import domain.IncorrectCommand;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -170,6 +170,4 @@ class MarsTest {
 
         Assertions.assertThrows(IncorrectCommand.class, () -> new Mars(input));
     }
-
-
 }
